@@ -18,5 +18,10 @@ namespace Web.Database
                 _dbContext.SaveChanges();
             }
         }
+
+        public List<Tech> GetAll()
+        {
+            return _dbContext.Techs.ToList();
+        }
     }
 }

@@ -8,10 +8,54 @@
 	<div class="main__frame">
 		<h1>Личная анкета пользователя</h1>
 		<h3 style="display: flex; justify-self: start;">Надоело?&nbsp Всегда можно &nbsp<a href="/User/Logout">выйти</a></h3>
-		<form>
+		<form action="/User/Save" method="post">
 				<div class="form__input">
 					<h3>Почта (Логин)</h3>
-					<input type="text" required="required" name="login" autocomplete="off" value="@Model.Login"/>
+					<input type="text" required="required" name="login" autocomplete="off" value="@Model.Login" style="display: none;"/>
+					<input type="text" required="required" autocomplete="off" value="@Model.Login" disabled/>
+				</div>
+
+				<div class="form__input" style="width: 750px; display: flex; flex-direction: row; flex-wrap: wrap;">
+					<h3 style="width: 100%; margin-bottom: 20px;">Знаю</h3>
+				@{
+					foreach(Tech tech in ViewBag.Techs) {
+								<div style="display: flex; flex-direction: row; align-items: center;">
+									<input type="checkbox" name="known_tech@{Write(tech.Id);}" style="margin-right: 25px;" @{if (Model.KnownTechs.Contains(tech.Id.ToString())) Write("checked"); }/>
+									<h3 style="margin-right: 50px;">@tech.Name</h3>
+								</div>
+					}
+				}
+				</div>
+
+				<div class="form__input" style="width: 750px; display: flex; flex-direction: row; flex-wrap: wrap;">
+					<h3 style="width: 100%; margin-bottom: 20px;">Хочу знать</h3>
+				@{
+					foreach(Tech tech in ViewBag.Techs) {
+								<div style="display: flex; flex-direction: row; align-items: center;">
+									<input type="checkbox" name="wanna_tech@{Write(tech.Id);}" style="margin-right: 25px;" @{if (Model.InterestTechs.Contains(tech.Id.ToString())) Write("checked"); }/>
+									<h3 style="margin-right: 50px;">@tech.Name</h3>
+						</div>
+					}
+				}
+			</div>
+
+				<div class="form__input" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+					<h3>Хочу быть ментором</h3>
+					<input type="checkbox" name="wannaMention" style="margin-left: 25px;" @{if (Model.WannaMention) Write("checked");}/>
+				</div>
+
+				<div class="form__input" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+					<h3>Ищу ментора</h3>
+					<input type="checkbox" name="wannaBeMentioned" style="margin-left: 25px;" @{if (Model.WannaBeMentioned) Write("checked");}/>
+				</div>
+
+				<div class="form__input">
+					<h3>О себе</h3>
+					<textarea name="aboutMe" style="height: 150px; resize: none;">@Model.AboutMe</textarea>
+				</div>
+
+				<div class="form__input">
+					<h3>Выбор времени обеда по умолчанию (Не реализовано) @Model.StartTime.Hour:@Model.StartTime.Minute-@Model.EndTime.Hour:@Model.EndTime.Minute</h3>
 				</div>
 
 				<button type="submit">

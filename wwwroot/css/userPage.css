@@ -71,7 +71,8 @@
 }
 
 .form__input input[type="text"],
-.form__input input[type="password"] {
+.form__input input[type="password"],
+.form__input textarea {
     width: 400px;
     height: 65px;
     box-sizing: border-box;
@@ -158,7 +159,8 @@
 
     .main__frame > form > button,
     .form__input input[type="text"],
-    .form__input input[type="password"] {
+    .form__input input[type="password"],
+    .form__input textarea {
         width: 350px;
     }
 }
@@ -179,7 +181,8 @@
 
     .main__frame > form > button,
     .form__input input[type="text"],
-    .form__input input[type="password"] {
+    .form__input input[type="password"],
+    .form__input textarea {
         width: 400px;
     }
 }
@@ -195,6 +198,6 @@
         position: relative;
         z-index: auto;
         background: rgba(0, 230, 179, 0.3);
-        o   pacity: 1;
+        opacity: 1;
     }
 }

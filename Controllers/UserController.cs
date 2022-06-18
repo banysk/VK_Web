@@ -28,6 +28,7 @@ namespace Web.Controllers
         [Route("User/{login}")]
         public IActionResult UserPage(string login)
         {
+            ViewBag.Techs = _techs.GetAll();
             return View("UserPage", _users.getUser(login));
         }
         #endregion
@@ -40,6 +41,10 @@ namespace Web.Controllers
         [Route("Login")]
         public IActionResult LoginPage()
         {
+            if (User.Identity != null && User.Identity.IsAuthenticated && User.Identity.Name != null)
+            {
+                return Redirect($"/User/{User.Identity.Name}");
+            }
             return View("LoginPage");
         }
 
@@ -62,7 +67,7 @@ namespace Web.Controllers
                     ClaimsIdentity.DefaultRoleClaimType);
 
                 await AuthenticationHttpContextExtensions.SignInAsync(HttpContext, new ClaimsPrincipal(id));
-                return RedirectToAction("UserPage", _users.getUser(inputData.Login));
+                return Redirect($"User/{User.Identity.Name}");
             }
             return Redirect("/Login");
         }
@@ -79,7 +84,7 @@ namespace Web.Controllers
         {
             if (User.Identity != null && User.Identity.IsAuthenticated && User.Identity.Name != null)
             {
-                return Redirect($"User/{User.Identity.Name}");
+                return Redirect($"/User/{User.Identity.Name}");
             }
             return View("RegistrationPage");
         }
@@ -105,7 +110,6 @@ namespace Web.Controllers
                         ClaimsIdentity.DefaultRoleClaimType);
 
                     await AuthenticationHttpContextExtensions.SignInAsync(HttpContext, new ClaimsPrincipal(id));
-                    return Redirect($"User/{User.Identity.Name}");
                 }
                 return Redirect("/Login");
             } 
@@ -123,6 +127,22 @@ namespace Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await AuthenticationHttpContextExtensions.SignOutAsync(HttpContext);
+            return Redirect("/Login");
+        }
+        #endregion
+
+        #region Обновление пользователя
+        [HttpPost]
+        [Authorize]
+        [Route("User/Save")]
+        public IActionResult Save(IFormCollection collection)
+        {
+            if (User.Identity != null && User.Identity.IsAuthenticated && User.Identity.Name != null)
+            {
+                User user = InputParser.ParseUserCollection(collection);
+                _users.Update(user);
+                return Redirect($"/User/{User.Identity.Name}");
+            }
             return Redirect("/Login");
         }
         #endregion

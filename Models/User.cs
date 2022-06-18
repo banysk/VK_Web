@@ -43,6 +43,8 @@ namespace Web.Models
         /// </summary>
         public string InterestTechs { get; set; } = string.Empty;
 
+        public string AboutMe { get; set; } = "Расскажите о себе:)";
+
         /// <summary>
         /// Хочет быть наставником
         /// </summary>

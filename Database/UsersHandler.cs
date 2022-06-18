@@ -40,5 +40,21 @@ namespace Web.Database
                 ? user
                 : new User();
         }
+
+        public void Update(User user)
+        {
+            User userToUpdate = _dbContext.Users.FirstOrDefault(x => x.Login == user.Login);
+            if (userToUpdate != null)
+            {
+                userToUpdate.KnownTechs = user.KnownTechs;
+                userToUpdate.InterestTechs = user.InterestTechs;
+                userToUpdate.WannaMention = user.WannaMention;
+                userToUpdate.WannaBeMentioned = user.WannaBeMentioned;
+                userToUpdate.AboutMe = user.AboutMe;
+
+                _dbContext.Update(userToUpdate);
+                _dbContext.SaveChanges();
+            }
+        }
     }
 }
