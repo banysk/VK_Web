@@ -26,7 +26,7 @@ namespace Web.Models
         /// <summary>
         /// Пароль
         /// </summary>
-        public string Password { get; set; } = "default";
+        public string Password { get; set; } = "1";
 
         /// <summary>
         /// Логин (почта)
