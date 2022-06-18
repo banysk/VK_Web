@@ -7,21 +7,21 @@
 	<div class="page__container-left form__frame">
 		<div class="form">
 			<h1>Регистрация</h1>
-			<h3>Уже есть аккаунт?&nbsp<a href="/Login">Войти</a></h3>
+			<h3>Уже есть аккаунт?&nbsp<a href="/Login">Авторизоваться</a></h3>
 			<form action="/User/Registration" method="post">
 				<div class="form__input">
 					<h3>Фамилия</h3>
-					<input type="text" required="required" name="surname"/>
+					<input type="text" required="required" name="surname" autocomplete="off"/>
 				</div>
 
 				<div class="form__input">
 					<h3>Имя</h3>
-					<input type="text" required="required" name="name"/>
+					<input type="text" required="required" name="name" autocomplete="off"/>
 				</div>
 
 				<div class="form__input">
 					<h3>Почта (Логин)</h3>
-					<input type="text" required="required" name="login"/>
+					<input type="text" required="required" name="login" autocomplete="off"/>
 				</div>
 
 				<div class="form__input" style="display: flex; flex-direction: row; align-items: center; justify-content: center">

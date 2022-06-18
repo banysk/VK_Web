@@ -1,27 +1,27 @@
-.page {
+﻿.page {
     min-height: 100%;
-
+    width: 100%;
     display: flex;
     flex-direction: row;
-
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: stretch;
 }
 
-.form__frame {
+.main__frame {
     display: flex;
     flex-direction: column;
-
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    flex: 1;
+    margin: 30px;
 }
 
-.form > * {
+.main__frame > * {
     margin: 0;
     padding: 0;
 }
 
-.form > h1 {
+.main__frame > h1 {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -33,7 +33,7 @@
     color: #009B79;
 }
 
-.form > h3 {
+.main__frame > h3 {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -47,13 +47,14 @@
     color: #7EDAC5;
 }
 
-.form > h3 > a {
+.main__frame > h3 > a {
     color: #009B79;
 }
 
 .form__input {
     margin: 20px 0;
 }
+
 .form__input h3 {
     font-family: 'Raleway';
     font-style: normal;
@@ -65,7 +66,6 @@
     align-items: center;
     text-align: center;
     color: #00E6B3;
-
     margin: 0;
     padding: 0;
 }
@@ -101,7 +101,7 @@
 }
 
 
-.form > form > button {
+.main__frame > form > button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -113,7 +113,6 @@
     background: #00E6B3;
     border-radius: 10px;
     border: none;
-
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -124,25 +123,21 @@
     align-items: center;
     text-align: center;
     color: #FFFFFF;
-
     /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;
-
     margin-top: 40px;
 }
 
-.form > form > button:hover {
+.main__frame > form > button {
     cursor: pointer;
 }
 
 .back__frame {
     background: rgba(0, 230, 179, 0.3);
-
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
 }
@@ -161,7 +156,7 @@
         display: none;
     }
 
-    .form > form > button,
+    .main__frame > form > button,
     .form__input input[type="text"],
     .form__input input[type="password"] {
         width: 350px;
@@ -182,7 +177,7 @@
         opacity: 0.1;
     }
 
-    .form > form > button,
+    .main__frame > form > button,
     .form__input input[type="text"],
     .form__input input[type="password"] {
         width: 400px;
@@ -200,6 +195,6 @@
         position: relative;
         z-index: auto;
         background: rgba(0, 230, 179, 0.3);
-        opacity: 1;
+        o   pacity: 1;
     }
 }
