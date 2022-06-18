@@ -20,7 +20,7 @@
 				@{
 					foreach(Tech tech in ViewBag.Techs) {
 								<div style="display: flex; flex-direction: row; align-items: center;">
-									<input type="checkbox" name="known_tech@{Write(tech.Id);}" style="margin-right: 25px;" @{if (Model.KnownTechs.Contains(tech.Id.ToString())) Write("checked"); }/>
+									<input type="checkbox" name="known_tech@{Write(tech.Id);}" style="margin-right: 25px;" @{if (Model.KnownTechs.Split(",").Contains(tech.Id.ToString())) Write("checked"); }/>
 									<h3 style="margin-right: 50px;">@tech.Name</h3>
 								</div>
 					}
@@ -32,7 +32,7 @@
 				@{
 					foreach(Tech tech in ViewBag.Techs) {
 								<div style="display: flex; flex-direction: row; align-items: center;">
-									<input type="checkbox" name="wanna_tech@{Write(tech.Id);}" style="margin-right: 25px;" @{if (Model.InterestTechs.Contains(tech.Id.ToString())) Write("checked"); }/>
+									<input type="checkbox" name="wanna_tech@{Write(tech.Id);}" style="margin-right: 25px;" @{if (Model.InterestTechs.Split(",").Contains(tech.Id.ToString())) Write("checked"); }/>
 									<h3 style="margin-right: 50px;">@tech.Name</h3>
 						</div>
 					}
